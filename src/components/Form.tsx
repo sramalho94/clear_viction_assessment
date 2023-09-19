@@ -8,10 +8,24 @@ import Box from '@mui/material/Box'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
-import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { createTheme, ThemeProvider, styled } from '@mui/material/styles'
 import { useState } from 'react'
 
 const defaultTheme = createTheme()
+
+const WhiteTextField = styled(TextField)(({ theme }) => ({
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: 'white'
+    },
+    '&:hover fieldset': {
+      borderColor: 'white'
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: 'white'
+    }
+  }
+}))
 
 const initialFormState: RequestBody = {
   email: '',
@@ -69,15 +83,15 @@ export default function Form() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign In
+            Register Project
           </Typography>
           <Box
             component="form"
             onSubmit={handleSubmit}
             noValidate
-            sx={{ mt: 1 }}
+            sx={{ mt: 1, borderColor: 'white' }}
           >
-            <TextField
+            <WhiteTextField
               margin="normal"
               required
               fullWidth
@@ -88,9 +102,19 @@ export default function Form() {
               autoFocus
               value={formData.email}
               onChange={handleChange}
-              sx={{ color: 'white' }}
+              InputProps={{
+                style: {
+                  color: 'white',
+                  borderColor: 'white'
+                }
+              }}
+              InputLabelProps={{
+                style: {
+                  color: 'white'
+                }
+              }}
             />
-            <TextField
+            <WhiteTextField
               margin="normal"
               required
               fullWidth
@@ -100,7 +124,17 @@ export default function Form() {
               autoFocus
               value={formData.githubRepoUrl}
               onChange={handleChange}
-              sx={{ color: 'white' }}
+              InputProps={{
+                style: {
+                  color: 'white',
+                  borderColor: 'white'
+                }
+              }}
+              InputLabelProps={{
+                style: {
+                  color: 'white'
+                }
+              }}
             />
             <Button
               type="submit"
@@ -109,7 +143,7 @@ export default function Form() {
               sx={{ mt: 3, mb: 2, color: 'white', borderColor: 'white' }}
               disabled={isLoading}
             >
-              {isLoading ? 'Signing In...' : 'Sign In'}
+              {isLoading ? 'Registering...' : 'Register Project'}
             </Button>
           </Box>
         </Box>
