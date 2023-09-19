@@ -4,10 +4,6 @@ import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
 import CssBaseline from '@mui/material/CssBaseline'
 import TextField from '@mui/material/TextField'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import Checkbox from '@mui/material/Checkbox'
-import Link from '@mui/material/Link'
-import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import Typography from '@mui/material/Typography'
@@ -90,6 +86,26 @@ export default function Form() {
               value={formData.email}
               onChange={handleChange}
             />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="githubRepoUrl"
+              label="Github Repo URL"
+              name="githubRepoUrl"
+              autoFocus
+              value={formData.githubRepoUrl}
+              onChange={handleChange}
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+              disabled={isLoading}
+            >
+              {isLoading ? 'Signing In...' : 'Sign In'}
+            </Button>
           </Box>
         </Box>
       </Container>
