@@ -61,10 +61,11 @@ export default function Form() {
             marginTop: 8,
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center'
+            alignItems: 'center',
+            color: 'white'
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main', color: 'white' }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
@@ -87,6 +88,7 @@ export default function Form() {
               autoFocus
               value={formData.email}
               onChange={handleChange}
+              sx={{ color: 'white' }}
             />
             <TextField
               margin="normal"
@@ -98,12 +100,13 @@ export default function Form() {
               autoFocus
               value={formData.githubRepoUrl}
               onChange={handleChange}
+              sx={{ color: 'white' }}
             />
             <Button
               type="submit"
               fullWidth
               variant="outlined"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 2, color: 'white', borderColor: 'white' }}
               disabled={isLoading}
             >
               {isLoading ? 'Signing In...' : 'Sign In'}
