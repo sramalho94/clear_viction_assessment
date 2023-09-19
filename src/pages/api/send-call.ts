@@ -21,6 +21,28 @@ export default async function handler(
           .status(400)
           .json({ error: 'Email and Github Repo Url are both required' })
       }
-    } catch {}
+
+      const response = await fetch(
+        'https://cv-devs-temp-challenge.vercel.app/api/challenge',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, githubRepoUrl })
+        }
+      )
+
+      // check status of response
+      if (response.ok) {
+        return res.status(200).json({ message: 'POST request successful' })
+      } else {
+        return res
+          .status(response.status)
+          .json({ error: 'POST request failed' })
+      }
+    } catch (error) {
+      return res.status(500).json({ error: 'Internal server error' })
+    }
+  } else {
+    return res.status(405).json({ error: 'Only Post method is allowed' })
   }
 }
