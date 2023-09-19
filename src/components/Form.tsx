@@ -48,6 +48,8 @@ export default function Form() {
     } catch (error) {
       console.error('Internal server error: ', error)
     }
+
+    setIsLoading(false)
   }
 
   return (
@@ -100,7 +102,7 @@ export default function Form() {
             <Button
               type="submit"
               fullWidth
-              variant="contained"
+              variant="outlined"
               sx={{ mt: 3, mb: 2 }}
               disabled={isLoading}
             >
