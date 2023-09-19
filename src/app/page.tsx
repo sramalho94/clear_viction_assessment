@@ -3,7 +3,7 @@ import Form from '@/components/Form'
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen min-w-screen flex-col items-center ">
+    <main className="flex min-h-screen min-w-screen flex-col justify-center">
       <Form />
     </main>
   )
