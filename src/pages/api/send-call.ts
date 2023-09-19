@@ -16,7 +16,7 @@ export default async function handler(
       const { email, githubRepoUrl }: RequestBody = req.body
 
       // check to ensure required values are provided
-      if (!email || !githubRepoUrl) {
+      if (email === '' || githubRepoUrl === '') {
         return res
           .status(400)
           .json({ error: 'Email and Github Repo Url are both required' })
