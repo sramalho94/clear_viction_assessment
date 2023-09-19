@@ -30,4 +30,55 @@ export default function Form() {
     const { name, value } = event.target
     setFormData({ ...formData, [name]: value })
   }
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+
+    setIsLoading(true)
+
+    try {
+      const response = await fetch('api/send-call', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
+      if (response.ok) {
+        console.log('Success')
+      } else {
+        console.error('Failed to send data')
+      }
+    } catch (error) {
+      console.error('Internal server error: ', error)
+    }
+  }
+
+  return (
+    <ThemeProvider theme={defaultTheme}>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center'
+          }}
+        >
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography>
+            <Box
+              component="form"
+              onSubmit={handleSubmit}
+              noValidate
+              sx={{ mt: 1 }}
+            ></Box>
+          </Typography>
+        </Box>
+      </Container>
+    </ThemeProvider>
+  )
 }
