@@ -33,14 +33,17 @@ const initialFormState: RequestBody = {
 }
 
 export default function Form() {
+  // state for form and isLoading
   const [formData, setFormData] = useState<RequestBody>(initialFormState)
   const [isLoading, setIsLoading] = useState(false)
 
+  // handleChange function updates state when change occurs
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target
     setFormData({ ...formData, [name]: value })
   }
 
+  // submit formData in API call
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
@@ -67,6 +70,7 @@ export default function Form() {
   }
 
   return (
+    // Form created using MaterialUI
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
